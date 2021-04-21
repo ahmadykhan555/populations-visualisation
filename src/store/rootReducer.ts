@@ -1,5 +1,5 @@
+import allCountriesData from "./countries/reducer";
 import { combineReducers } from "redux";
-import countriesData from "./countries/reducer";
 
-const reducer = combineReducers({ countriesData });
+const reducer = combineReducers({ allCountriesData });
 export default reducer;
