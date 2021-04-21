@@ -25,10 +25,14 @@ const App: React.FC<any> = ({ dispatch }) => {
   };
 
   return (
-    <div className='App'>
-      <CountriesList />
-      <MapView />
-      <GraphView />
+    <div className='app'>
+      <div className='app__aside'>
+        <CountriesList />
+      </div>
+      <div className='app__center'>
+        <MapView />
+        <GraphView />
+      </div>
     </div>
   );
 };
