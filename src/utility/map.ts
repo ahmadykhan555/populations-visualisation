@@ -1,6 +1,6 @@
+import environment from "../environment/environment";
 import mapbox from "mapbox-gl";
-mapbox.accessToken =
-  "pk.eyJ1IjoiYWhtYWR5YXJraGFuNTU1IiwiYSI6ImNrbnFyZGl1NTA3eGYycW50d3hpbnoxNWwifQ.ELqbVUPXx0uea-cQgEr3Wg";
+mapbox.accessToken = environment.mapboxAccessToken;
 
 const DEFAULT_ZOOM_LEVEL = 9;
 const DEFAULT_CENTER = new mapbox.LngLat(-74.5, 40);
