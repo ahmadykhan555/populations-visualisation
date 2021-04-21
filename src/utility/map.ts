@@ -1,8 +1,10 @@
+import PinIcon from "../pin.svg";
 import environment from "../environment/environment";
 import mapbox from "mapbox-gl";
+
 mapbox.accessToken = environment.mapboxAccessToken;
 
-const DEFAULT_ZOOM_LEVEL = 9;
+const DEFAULT_ZOOM_LEVEL = 2;
 const DEFAULT_CENTER = new mapbox.LngLat(-74.5, 40);
 
 export const createMap = (
@@ -16,4 +18,25 @@ export const createMap = (
     center,
     zoom,
   });
+};
+
+/**
+ *
+ * @param id a unique ID for Marker DOM element
+ * @param coords set of LngLat
+ * @returns {mapbox.Marker} Marker
+ */
+export const createMarker = (id: string, coords: mapbox.LngLat) => {
+  const el = document.createElement("div");
+  el.id = id;
+  el.className = "location-marker";
+  return new mapbox.Marker(el).setLngLat(coords);
+};
+
+export const createPopup = (text: string): mapbox.Popup => {
+  return new mapbox.Popup({
+    offset: 25,
+    closeButton: false,
+    closeOnClick: false,
+  }).setHTML(text);
 };
