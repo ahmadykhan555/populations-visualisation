@@ -1,6 +1,6 @@
 import "./CountryListItem.scss";
 
-import { Country } from "../../../models/country";
+import { Country } from "../../../../models/country";
 import React from "react";
 
 interface OwnProps {

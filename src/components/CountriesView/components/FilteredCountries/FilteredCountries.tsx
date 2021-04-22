@@ -1,6 +1,6 @@
-import { Country } from "../../../models/country";
-import CountryListItem from "../CountryListItem/CountryListItem";
+import { Country } from "../../../../models/country";
 import React from "react";
+import { CountryListItem } from "..";
 interface OwnProps {
   countries: Country[];
 }
