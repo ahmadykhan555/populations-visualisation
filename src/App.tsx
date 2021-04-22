@@ -5,7 +5,7 @@ import {
   setCountriesForComparison,
 } from "./store/countries/actions";
 
-import CountriesList from "./components/CountriesList/CountriesList";
+import CountriesView from "./components/CountriesView/CountriesView";
 import { Country } from "./models/country";
 import GraphView from "./components/GraphView/GraphView";
 import MapView from "./components/MapView/MapView";
@@ -23,7 +23,6 @@ const App: React.FC<any> = ({ dispatch }) => {
     try {
       const allData: Country[] = await getAllCountriesData();
       dispatch(setCountriesData(allData));
-      dispatch(setCountriesForComparison(allData.slice(0, 3)));
     } catch (e) {
       // handle error
     }
@@ -32,7 +31,7 @@ const App: React.FC<any> = ({ dispatch }) => {
   return (
     <div className='app'>
       <div className='app__aside'>
-        <CountriesList />
+        <CountriesView />
       </div>
       <div className='app__center'>
         <MapView />
