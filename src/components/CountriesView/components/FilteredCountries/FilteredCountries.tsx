@@ -1,10 +1,9 @@
 import { Country } from "../../../../models/country";
 import React from "react";
 import { CountryListItem } from "..";
-interface OwnProps {
-  countries: Country[];
-}
-const FilteredCountries: React.FC<OwnProps> = ({ countries }) => {
+import { FilteredCountriesProps } from "./types";
+
+const FilteredCountries: React.FC<FilteredCountriesProps> = ({ countries }) => {
   return (
     <div className='filtered-countries-component countries-list'>
       <h3 className='section-label'>Comparing now</h3>
