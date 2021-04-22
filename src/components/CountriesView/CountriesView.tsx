@@ -2,11 +2,10 @@ import "./CountriesView.scss";
 
 import { ConnectedProps, connect } from "react-redux";
 import React, { useEffect } from "react";
-
-import AllCountries from "./AllCountries/AllCountries";
 import FilteredCountries from "./FilteredCountries/FilteredCountries";
 import SearchBoxComponent from "../SearchBox/SearchBox";
 import { setCountriesForComparison } from "../../store/countries/actions";
+import { AllCountries } from "./components";
 
 interface OwnProps extends PropsFromRedux {}
 const CountriesView: React.FC<OwnProps> = ({
