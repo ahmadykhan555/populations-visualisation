@@ -11,7 +11,11 @@ export const getAllCountriesData = async (): Promise<Country[]> => {
       const { data: allCountriesData } = await httpGET(
         CountriesEndpoints.AllCountries
       );
-      resolve(allCountriesData);
+      resolve(
+        (allCountriesData as Country[]).sort(
+          (a, b) => b.population - a.population
+        )
+      );
     } catch (e) {
       reject(e);
     }
