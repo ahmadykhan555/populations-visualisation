@@ -1,0 +1,16 @@
+.regions-selector-component {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.cell {
+  padding: 0.25rem 0.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+
+  &--selected {
+    background: green;
+    color: white;
+  }
+}
