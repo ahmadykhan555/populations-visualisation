@@ -1,10 +1,26 @@
 import "./GraphView.scss";
 
-import React from "react";
-interface OwnProps {}
+import { ConnectedProps, connect } from "react-redux";
 
-const GraphView: React.FC<OwnProps> = () => {
-  return <div className='graph-view-component'>Graph view</div>;
+import BarGraphComponent from "./BarGraph/BarGraphs";
+import React from "react";
+
+interface OwnProps extends PropsFromRedux {}
+
+const GraphView: React.FC<OwnProps> = ({ filteredCountries }) => {
+  return (
+    <div className='graph-view-component'>
+      {filteredCountries.length > 0 && (
+        <BarGraphComponent data={filteredCountries} />
+      )}
+    </div>
+  );
 };
 
-export default GraphView;
+const mapStateToProps = (state: any) => ({
+  filteredCountries: state.allCountriesData.filteredForComparison,
+});
+const connector = connect(mapStateToProps);
+type PropsFromRedux = ConnectedProps<typeof connector>;
+
+export default connector(GraphView);
