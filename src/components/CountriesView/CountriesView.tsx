@@ -3,16 +3,24 @@ import "./CountriesView.scss";
 import { ConnectedProps, connect } from "react-redux";
 import React, { useEffect } from "react";
 import { setCountriesForComparison } from "../../store/countries/actions";
-import { AllCountries, FilteredCountries } from "./components";
+import { AllCountries, FilteredCountries, RegionsSelector } from "./components";
 import { SearchBox } from "..";
+import { Country } from "../../models/country";
 
 interface OwnProps extends PropsFromRedux {}
 const CountriesView: React.FC<OwnProps> = ({
   allCountriesData,
   filteredCountries,
+  regions,
   dispatch,
 }) => {
   useEffect(() => {}, [allCountriesData]);
+  const handleSelectedRegion = (region: string) => {
+    const filteredForRegion = allCountriesData.filter(
+      (country: Country) => country.region === region
+    );
+    dispatch(setCountriesForComparison(filteredForRegion.slice(0, 5)));
+  };
   return (
     <div className='countries-list-component'>
       {allCountriesData.length ? (
@@ -22,11 +30,12 @@ const CountriesView: React.FC<OwnProps> = ({
             list={allCountriesData}
             placeholderText='Search countries/regions'
             onSearchComplete={(list: any) => {
-              if (!list.length) {
-                debugger;
-              }
               dispatch(setCountriesForComparison(list.slice(0, 5)));
             }}
+          />
+          <RegionsSelector
+            onCellSelected={handleSelectedRegion}
+            list={regions}
           />
           {filteredCountries.length > 0 && (
             <FilteredCountries countries={filteredCountries} />
@@ -43,6 +52,7 @@ const CountriesView: React.FC<OwnProps> = ({
 const mapStateToProps = (state: any) => ({
   allCountriesData: state.allCountriesData.allCountriesData,
   filteredCountries: state.allCountriesData.filteredForComparison,
+  regions: state.allCountriesData.regions,
 });
 
 const connector = connect(mapStateToProps);

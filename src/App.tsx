@@ -3,10 +3,10 @@ import "./App.scss";
 import { setCountriesData } from "./store/countries/actions";
 
 import { Country } from "./models/country";
-import { connect } from "react-redux";
 import { getAllCountriesData } from "./API/countries";
 import { useEffect } from "react";
 import { GraphView, MapView, CountriesView } from "./components";
+import { connect } from "react-redux";
 
 const App: React.FC<any> = ({ dispatch }) => {
   // onMount

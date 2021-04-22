@@ -1,4 +1,3 @@
-import { Country } from "../../../../models/country";
 import React from "react";
 import { CountryListItem } from "..";
 import { FilteredCountriesProps } from "./types";
