@@ -12,6 +12,7 @@ const CONTAINER_ID = "app-map-view-container";
 
 const MapView: React.FC<OwnProps> = ({ countriesData }) => {
   const [map, setMap] = useState<mapboxgl.Map>();
+  const markers: mapboxgl.Marker[] = [];
 
   // onMount
   useEffect(() => {
@@ -30,15 +31,22 @@ const MapView: React.FC<OwnProps> = ({ countriesData }) => {
           );
           marker
             .setPopup(
-              createPopup(`<p>Hello from <strong>${country.name}</strong></p>`)
+              createPopup(
+                `<p><strong>${country.name}</strong></p> <p><strong>${country.region}</strong></p>`
+              )
             )
             .addTo(map)
             .togglePopup();
           bounds.extend(marker.getLngLat());
+          markers.push(marker);
         }
       });
       map.fitBounds(bounds); // fit viewport to show all markers
     }
+
+    return () => {
+      markers.forEach((marker) => marker.remove());
+    };
   }, [countriesData]);
 
   return <div id={CONTAINER_ID} className='map-view-component'></div>;
