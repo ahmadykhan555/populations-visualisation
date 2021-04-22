@@ -6,7 +6,7 @@ This project compares different countries' population data and visualizes them i
 
 You need to use the terminal to pass in the secret access token.
 
-##### Mac
+##### Mac/Linux
 
 `REACT_APP_MAP_ACCESS_TOKEN=yourToken npm start`
 
