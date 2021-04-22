@@ -1,17 +1,12 @@
 import "./App.scss";
 
-import {
-  setCountriesData,
-  setCountriesForComparison,
-} from "./store/countries/actions";
+import { setCountriesData } from "./store/countries/actions";
 
-import CountriesView from "./components/CountriesView/CountriesView";
 import { Country } from "./models/country";
-import GraphView from "./components/GraphView/GraphView";
-import MapView from "./components/MapView/MapView";
 import { connect } from "react-redux";
 import { getAllCountriesData } from "./API/countries";
 import { useEffect } from "react";
+import { GraphView, MapView, CountriesView } from "./components";
 
 const App: React.FC<any> = ({ dispatch }) => {
   // onMount

@@ -2,9 +2,9 @@ import "./CountriesView.scss";
 
 import { ConnectedProps, connect } from "react-redux";
 import React, { useEffect } from "react";
-import SearchBoxComponent from "../SearchBox/SearchBox";
 import { setCountriesForComparison } from "../../store/countries/actions";
 import { AllCountries, FilteredCountries } from "./components";
+import { SearchBox } from "..";
 
 interface OwnProps extends PropsFromRedux {}
 const CountriesView: React.FC<OwnProps> = ({
@@ -17,7 +17,7 @@ const CountriesView: React.FC<OwnProps> = ({
     <div className='countries-list-component'>
       {allCountriesData.length ? (
         <>
-          <SearchBoxComponent
+          <SearchBox
             searchFor={["name", "region"]}
             list={allCountriesData}
             placeholderText='Search countries/regions'
