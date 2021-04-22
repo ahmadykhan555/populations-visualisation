@@ -1,7 +1,7 @@
 import "./SearchBox.scss";
 
 import React, { useEffect, useState } from "react";
-
+import debounce from "lodash.debounce";
 import { configureSearcher } from "../../utility/search";
 import fuse from "fuse.js";
 
@@ -12,6 +12,7 @@ interface OwnProps {
   searchFor: string[];
   searchThreshold?: number;
 }
+const DEBOUNCE_DURATION = 350; // in ms
 const SearchBoxComponent: React.FC<OwnProps> = ({
   placeholderText,
   list,
@@ -19,14 +20,14 @@ const SearchBoxComponent: React.FC<OwnProps> = ({
   onSearchComplete,
 }) => {
   const [searcher, setSearcher] = useState<fuse<any>>();
-  const handleSearch = (query = "") => {
+  const handleSearch = debounce((query = "") => {
     if (!query.trim()) {
       onSearchComplete([]);
       return;
     }
     const searchResults = searcher?.search(query);
     onSearchComplete(searchResults?.map((e) => e.item));
-  };
+  }, DEBOUNCE_DURATION);
 
   useEffect(() => {
     if (list.length) {
