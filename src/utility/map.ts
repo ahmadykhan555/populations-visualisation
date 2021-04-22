@@ -1,8 +1,5 @@
-import PinIcon from "../pin.svg";
-import environment from "../environment/environment";
 import mapbox from "mapbox-gl";
-
-mapbox.accessToken = environment.mapboxAccessToken;
+mapbox.accessToken = process.env.REACT_APP_MAP_ACCESS_TOKEN || "";
 
 const DEFAULT_ZOOM_LEVEL = 2;
 const DEFAULT_CENTER = new mapbox.LngLat(-74.5, 40);
