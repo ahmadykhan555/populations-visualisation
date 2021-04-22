@@ -1,0 +1,8 @@
+.countries-list-component {
+  max-height: 100%;
+
+  .countries-list {
+    overflow-y: scroll;
+    max-height: calc(100vh - 120px);
+  }
+}
