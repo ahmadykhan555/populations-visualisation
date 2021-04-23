@@ -41,7 +41,7 @@ const MapView: React.FC<OwnProps> = ({ countriesData }) => {
           markers.push(marker);
         }
       });
-      map.fitBounds(bounds); // fit viewport to show all markers
+      map.fitBounds(bounds, { maxDuration: 1000 }); // fit viewport to show all markers
     }
 
     return () => {
