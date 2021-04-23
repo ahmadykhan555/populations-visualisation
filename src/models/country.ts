@@ -23,4 +23,5 @@ export interface Country {
   timezones: string[];
   topLevelDomain: string[];
   translations: string;
+  formattedPopulation: string;
 }

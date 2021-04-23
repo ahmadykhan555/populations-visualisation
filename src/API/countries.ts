@@ -12,9 +12,14 @@ export const getAllCountriesData = async (): Promise<Country[]> => {
         CountriesEndpoints.AllCountries
       );
       resolve(
-        (allCountriesData as Country[]).sort(
-          (a, b) => b.population - a.population
-        )
+        (allCountriesData as Country[])
+          .map((country) => ({
+            ...country,
+            formattedPopulation: new Intl.NumberFormat().format(
+              country.population
+            ),
+          }))
+          .sort((a, b) => b.population - a.population)
       );
     } catch (e) {
       reject(e);

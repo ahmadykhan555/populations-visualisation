@@ -1,0 +1,1 @@
+export const MAX_COUNTRIES_TO_COMPARE = 5;

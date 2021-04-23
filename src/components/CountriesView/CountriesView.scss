@@ -5,4 +5,10 @@
     overflow-y: scroll;
     max-height: calc(100vh - 120px);
   }
+
+  .section-label {
+    font-weight: 900;
+    text-transform: uppercase;
+    margin: 1rem 0 !important;
+  }
 }

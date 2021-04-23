@@ -1,15 +1,27 @@
 import { Country } from "../../models/country";
 
 export const setCountriesData = (data: Country[]) => ({
-  type: CountryStateActions.SET_COUNTRIES_DATA,
+  type: CountryStateActions.SetCountriesData,
   payload: [...data],
 });
 export const setCountriesForComparison = (data: Country[]) => ({
-  type: CountryStateActions.SET_FOR_COMPARISON,
+  type: CountryStateActions.SetForComparison,
   payload: [...data],
 });
 
+export const addCountryForComparison = (country: Country) => ({
+  type: CountryStateActions.AddForComparison,
+  payload: country,
+});
+
+export const removeCountryFromComparison = (country: Country) => ({
+  type: CountryStateActions.RemoveFromComparison,
+  payload: country,
+});
+
 export enum CountryStateActions {
-  SET_COUNTRIES_DATA = "SET-COUNTRIES-DATA",
-  SET_FOR_COMPARISON = "SET-FOR-COMPARISON",
+  SetCountriesData = "SET-COUNTRIES-DATA",
+  SetForComparison = "SET-FOR-COMPARISON",
+  AddForComparison = "ADD-FOR-COMPARISON",
+  RemoveFromComparison = "REMOVE-FROM-COMPARISON",
 }

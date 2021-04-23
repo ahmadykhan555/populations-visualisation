@@ -3,7 +3,7 @@ import rootReducer from "./rootReducer";
 
 export interface StateAction {
   type: any;
-  payload?: object;
+  payload?: any;
 }
 
 const store = createStore(rootReducer);

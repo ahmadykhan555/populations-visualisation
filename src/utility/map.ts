@@ -8,7 +8,10 @@ export const createMap = (
   container: string,
   center: mapbox.LngLat = DEFAULT_CENTER,
   zoom = DEFAULT_ZOOM_LEVEL
-): mapbox.Map => {
+): mapbox.Map | undefined => {
+  if (!mapbox.accessToken) {
+    return;
+  }
   return new mapbox.Map({
     container, // unique container ID
     style: "mapbox://styles/mapbox/streets-v11", // style URL
