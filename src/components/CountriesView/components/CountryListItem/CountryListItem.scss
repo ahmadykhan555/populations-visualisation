@@ -6,6 +6,21 @@
   box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
   background-color: inherit;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 5px;
+  margin-bottom: 0.5rem;
+  background: white;
+
+  &--selected {
+    background: var(--app-color-selected);
+  }
+
+  &__content {
+    display: flex;
+    flex: 1;
+    align-items: center;
+  }
 
   .flag {
     height: 35px;

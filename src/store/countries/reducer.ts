@@ -1,6 +1,7 @@
 import { Country } from "../../models/country";
 import { CountryStateActions } from "./actions";
 import { StateAction } from "..";
+import { MAX_COUNTRIES_TO_COMPARE } from "../../API/countries";
 
 interface CountriesData {
   allCountriesData: Country[];
@@ -19,7 +20,7 @@ const countriesReducer = (
   action: StateAction
 ) => {
   switch (action.type) {
-    case CountryStateActions.SET_COUNTRIES_DATA: {
+    case CountryStateActions.SetCountriesData: {
       const regionsMap: any = {};
       if (action.payload) {
         (action.payload as Country[]).forEach((country) => {
@@ -35,11 +36,34 @@ const countriesReducer = (
       };
     }
 
-    case CountryStateActions.SET_FOR_COMPARISON: {
+    case CountryStateActions.SetForComparison: {
+      const filtered = action.payload?.slice(0, MAX_COUNTRIES_TO_COMPARE) || [];
       return {
         ...state,
-        filteredForComparison: action.payload,
+        filteredForComparison: filtered,
       };
+    }
+
+    case CountryStateActions.AddForComparison: {
+      if (state.filteredForComparison.length < MAX_COUNTRIES_TO_COMPARE) {
+        return {
+          ...state,
+          filteredForComparison: [
+            ...state.filteredForComparison,
+            action.payload,
+          ],
+        };
+      } else {
+        return { ...state };
+      }
+    }
+
+    case CountryStateActions.RemoveFromComparison: {
+      const countryToRemove = action.payload;
+      const countries = state.filteredForComparison.filter(
+        (country) => country.name !== countryToRemove.name
+      );
+      return { ...state, filteredForComparison: countries };
     }
     default:
       return { ...state };
