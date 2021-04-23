@@ -29,7 +29,9 @@ const CountryListItem: React.FC<CountryListItemProps> = ({
         <img src={country.flag} alt='' className='flag' />
         <p key={country.numericCode}>{country.name}</p>
       </div>
-      <p className='country-list-item__population-tag'>{country.population}</p>
+      <p className='country-list-item__population-tag'>
+        {country.formattedPopulation}
+      </p>
       {selected && <div className='country-list-item__checkmark'>✅</div>}
     </div>
   );
