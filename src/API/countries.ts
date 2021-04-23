@@ -21,3 +21,5 @@ export const getAllCountriesData = async (): Promise<Country[]> => {
     }
   });
 };
+
+export const MAX_COUNTRIES_TO_COMPARE = 5;
