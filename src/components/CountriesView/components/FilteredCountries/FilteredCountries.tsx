@@ -5,11 +5,13 @@ import "./FilteredCountries.scss";
 
 const FilteredCountries: React.FC<FilteredCountriesProps> = ({ countries }) => {
   return (
-    <div className='filtered-countries-component countries-list'>
+    <div className='filtered-countries-component'>
       <h3 className='section-label'>Comparing now</h3>
-      {countries.map((country, index) => (
-        <CountryListItem index={index} country={country} />
-      ))}
+      <div className='countries-list'>
+        {countries.map((country, index) => (
+          <CountryListItem index={index} country={country} />
+        ))}
+      </div>
     </div>
   );
 };

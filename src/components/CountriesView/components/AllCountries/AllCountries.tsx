@@ -7,6 +7,7 @@ import {
   removeCountryFromComparison,
 } from "../../../../store/countries/actions";
 import { AllCountriesProps } from "./types";
+import "./AllCountries.scss";
 
 const AllCountries: React.FC<AllCountriesProps> = ({ countries }) => {
   const dispatch = useDispatch();
@@ -21,15 +22,23 @@ const AllCountries: React.FC<AllCountriesProps> = ({ countries }) => {
 
   return (
     <div className='all-countries-component countries-list'>
-      <h3 className='section-label'>All Countries</h3>
-      {countries.map((country, index) => (
-        <CountryListItem
-          onCountrySelected={handleCountrySelected}
-          index={index}
-          key={index}
-          country={country}
-        />
-      ))}
+      <div style={{ display: "flex", alignItems: "center" }}>
+        <h3 className='section-label'>All Countries</h3>{" "}
+        <span style={{ fontSize: "0.75rem", marginLeft: "0.5rem" }}>
+          (Select upto 5 for comparison)
+        </span>
+      </div>
+      <div className='countries-list'>
+        {countries.map((country, index) => (
+          <CountryListItem
+            allowSelection
+            onCountrySelected={handleCountrySelected}
+            index={index}
+            key={index}
+            country={country}
+          />
+        ))}
+      </div>
     </div>
   );
 };

@@ -12,15 +12,15 @@ const BarGraphComponent: React.FC<BarGraphParams> = ({ data }) => {
   const getColor = (entry: any): string => {
     switch (entry.data.region) {
       case "Africa":
-        return "#828282";
+        return "#a66ef4f5";
       case "Americas":
         return "#27AE60";
       case "Asia":
         return "#EB5757";
       case "Europe":
-        return "#828282";
+        return "#ea3ad7";
       case "Oceania":
-        return "#27AE60";
+        return "#e8b35a";
       case "Polar":
         return "#828282";
       default:

@@ -1,7 +1,7 @@
 import { Country } from "../../models/country";
 import { CountryStateActions } from "./actions";
 import { StateAction } from "..";
-import { MAX_COUNTRIES_TO_COMPARE } from "../../API/countries";
+import { MAX_COUNTRIES_TO_COMPARE } from "../../constants";
 
 interface CountriesData {
   allCountriesData: Country[];

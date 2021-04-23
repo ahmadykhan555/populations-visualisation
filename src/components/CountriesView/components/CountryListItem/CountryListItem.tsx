@@ -7,9 +7,13 @@ const CountryListItem: React.FC<CountryListItemProps> = ({
   country,
   index,
   onCountrySelected,
+  allowSelection,
 }) => {
   const [selected, setSelected] = useState<boolean>(false);
   const handleItemClick = () => {
+    if (!allowSelection) {
+      return;
+    }
     setSelected(!selected);
     onCountrySelected && onCountrySelected(country, !selected);
   };
@@ -25,6 +29,7 @@ const CountryListItem: React.FC<CountryListItemProps> = ({
         <img src={country.flag} alt='' className='flag' />
         <p key={country.numericCode}>{country.name}</p>
       </div>
+      <p className='country-list-item__population-tag'>{country.population}</p>
       {selected && <div className='country-list-item__checkmark'>✅</div>}
     </div>
   );

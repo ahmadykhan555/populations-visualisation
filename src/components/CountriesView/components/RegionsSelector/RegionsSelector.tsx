@@ -12,12 +12,14 @@ const RegionsSelector: React.FC<RegionsSelectorProps> = ({
     onCellSelected(label);
   };
   return (
-    <div className='regions-selector-component'>
+    <div className={`regions-selector-component`}>
       {list.map((label, index) => (
         <div
+          className={`regions-selector-component--${label.toLowerCase()} cell ${
+            selectedCell === index ? "cell--selected" : ""
+          }`}
           key={index}
-          onClick={() => handleCellClicked(index, label)}
-          className={`cell ${selectedCell === index ? "cell--selected" : ""}`}>
+          onClick={() => handleCellClicked(index, label)}>
           {label}
         </div>
       ))}

@@ -10,8 +10,10 @@ interface OwnProps extends PropsFromRedux {}
 const GraphView: React.FC<OwnProps> = ({ filteredCountries }) => {
   return (
     <div className='graph-view-component'>
-      {filteredCountries.length > 0 && (
+      {filteredCountries.length > 0 ? (
         <BarGraphComponent data={filteredCountries} />
+      ) : (
+        <p>No graphs to show yet!</p>
       )}
     </div>
   );
