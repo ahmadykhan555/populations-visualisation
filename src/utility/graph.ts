@@ -1,3 +1,8 @@
+/**
+ *
+ * @param entry data-structure passed by BarGraph
+ * @returns {string} color for the bar
+ */
 export const getColor = (entry: any): string => {
   switch (entry.data.region) {
     case Regions.Africa:
