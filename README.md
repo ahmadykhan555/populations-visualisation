@@ -1,4 +1,4 @@
-### Population Visualization
+### Population Visualization ![Hits](https://views.whatilearened.today/views/github/ahmadykhan555/populations-visualisation.svg) 
 
 This project compares different countries' population data and visualizes them in a meaningful intuitive manner
 
