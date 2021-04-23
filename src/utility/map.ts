@@ -14,7 +14,7 @@ export const createMap = (
   }
   return new mapbox.Map({
     container, // unique container ID
-    style: "mapbox://styles/mapbox/streets-v11", // style URL
+    style: "mapbox://styles/mapbox/light-v10", // style URL
     center,
     zoom,
   });
