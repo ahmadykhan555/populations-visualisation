@@ -1,7 +1,6 @@
 import React from "react";
 import { CountryListItem } from "..";
 import { FilteredCountriesProps } from "./types";
-import "./FilteredCountries.scss";
 
 const FilteredCountries: React.FC<FilteredCountriesProps> = ({ countries }) => {
   return (
