@@ -7,7 +7,6 @@ import {
   removeCountryFromComparison,
 } from "../../../../store/countries/actions";
 import { AllCountriesProps } from "./types";
-import "./AllCountries.scss";
 
 const AllCountries: React.FC<AllCountriesProps> = ({ countries }) => {
   const dispatch = useDispatch();

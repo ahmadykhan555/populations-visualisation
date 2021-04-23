@@ -37,10 +37,12 @@ const CountriesView: React.FC<OwnProps> = ({
             onCellSelected={handleSelectedRegion}
             list={regions}
           />
-          {filteredCountries.length > 0 && (
-            <FilteredCountries countries={filteredCountries} />
-          )}
-          <AllCountries countries={allCountriesData} />
+          <div className='list-sections'>
+            {filteredCountries.length > 0 && (
+              <FilteredCountries countries={filteredCountries} />
+            )}
+            <AllCountries countries={allCountriesData} />
+          </div>
         </>
       ) : (
         <p>No countries yet</p>
