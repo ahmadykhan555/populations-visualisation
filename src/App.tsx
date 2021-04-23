@@ -4,13 +4,15 @@ import { setCountriesData } from "./store/countries/actions";
 
 import { Country } from "./models/country";
 import { getAllCountriesData } from "./API/countries";
-import { useEffect } from "react";
-import { GraphView, MapView, CountriesView } from "./components";
+import { useEffect, useState } from "react";
+import { GraphView, MapView, CountriesView, AppLoader } from "./components";
 import { connect } from "react-redux";
 
 const App: React.FC<any> = ({ dispatch }) => {
+  const [loading, setLoading] = useState<boolean>(false);
   // onMount
   useEffect(() => {
+    setLoading(true);
     loadData();
   }, []);
 
@@ -20,11 +22,14 @@ const App: React.FC<any> = ({ dispatch }) => {
       dispatch(setCountriesData(allData));
     } catch (e) {
       // handle error
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <div className='app'>
+      {loading && <AppLoader />}
       <div className='app__aside'>
         <CountriesView />
       </div>
