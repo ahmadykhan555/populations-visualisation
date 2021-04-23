@@ -5,7 +5,7 @@ This project compares different countries' population data and visualizes them i
 ### Running the app
 
 - Make sure you have the latest LTS version of NodeJs https://nodejs.org/en/download/
-- This app is created using npx create-react-app and utilizes yarn as the dependency manager.
+- This app is created using npx create-react-app and utilizes yarn as the package manager.
 - To install yarn simply run `npm install --global yarn`.
 - Make sure to run `yarn install` to install all project dependencies.
 - To run the app open this project in vs-code and open the terminal 'control + ` ' or use your preferred terminal and go to the directory.
