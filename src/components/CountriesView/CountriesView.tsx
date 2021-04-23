@@ -9,25 +9,25 @@ import { Country } from "../../models/country";
 
 interface OwnProps extends PropsFromRedux {}
 const CountriesView: React.FC<OwnProps> = ({
-  allCountriesData,
+  allCountries,
   filteredCountries,
   regions,
   dispatch,
 }) => {
-  useEffect(() => {}, [allCountriesData]);
+  useEffect(() => {}, [allCountries]);
   const handleSelectedRegion = (region: string) => {
-    const filteredForRegion = allCountriesData.filter(
+    const filteredForRegion = allCountries.filter(
       (country: Country) => country.region === region
     );
     dispatch(setCountriesForComparison(filteredForRegion));
   };
   return (
     <div className='countries-list-component'>
-      {allCountriesData.length ? (
+      {allCountries.length ? (
         <>
           <SearchBox
             searchFor={["name", "region"]}
-            list={allCountriesData}
+            list={allCountries}
             placeholderText='Search countries/regions'
             onSearchComplete={(list: any) => {
               dispatch(setCountriesForComparison(list));
@@ -41,7 +41,7 @@ const CountriesView: React.FC<OwnProps> = ({
             {filteredCountries.length > 0 && (
               <FilteredCountries countries={filteredCountries} />
             )}
-            <AllCountries countries={allCountriesData} />
+            <AllCountries countries={allCountries} />
           </div>
         </>
       ) : (
@@ -52,9 +52,9 @@ const CountriesView: React.FC<OwnProps> = ({
 };
 
 const mapStateToProps = (state: any) => ({
-  allCountriesData: state.allCountriesData.allCountriesData,
-  filteredCountries: state.allCountriesData.filteredForComparison,
-  regions: state.allCountriesData.regions,
+  allCountries: state.data.allCountries,
+  filteredCountries: state.data.filteredCountries,
+  regions: state.data.regions,
 });
 
 const connector = connect(mapStateToProps);
