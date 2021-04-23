@@ -11,7 +11,6 @@ This project compares different countries' population data and visualizes them i
 - To run the app open this project in vs-code and open the terminal 'control + ` ' or use your preferred terminal and go to the directory.
 - Run `yarn start` (see instructions for running with mapbox below).
 - Open your preferred browser at `http://localhost:3000`.
-- This app is also deployed at http://ahmadyaarkhan.com
 
 #### Adding MapBox Access token
 
