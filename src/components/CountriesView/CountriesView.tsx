@@ -2,38 +2,47 @@ import "./CountriesView.scss";
 
 import { ConnectedProps, connect } from "react-redux";
 import React, { useEffect } from "react";
-
-import AllCountries from "./AllCountries/AllCountries";
-import FilteredCountries from "./FilteredCountries/FilteredCountries";
-import SearchBoxComponent from "../SearchBox/SearchBox";
 import { setCountriesForComparison } from "../../store/countries/actions";
+import { AllCountries, FilteredCountries, RegionsSelector } from "./components";
+import { SearchBox } from "..";
+import { Country } from "../../models/country";
 
 interface OwnProps extends PropsFromRedux {}
 const CountriesView: React.FC<OwnProps> = ({
   allCountriesData,
   filteredCountries,
+  regions,
   dispatch,
 }) => {
   useEffect(() => {}, [allCountriesData]);
+  const handleSelectedRegion = (region: string) => {
+    const filteredForRegion = allCountriesData.filter(
+      (country: Country) => country.region === region
+    );
+    dispatch(setCountriesForComparison(filteredForRegion));
+  };
   return (
     <div className='countries-list-component'>
       {allCountriesData.length ? (
         <>
-          <SearchBoxComponent
+          <SearchBox
             searchFor={["name", "region"]}
             list={allCountriesData}
             placeholderText='Search countries/regions'
             onSearchComplete={(list: any) => {
-              if (!list.length) {
-                debugger;
-              }
-              dispatch(setCountriesForComparison(list.slice(0, 5)));
+              dispatch(setCountriesForComparison(list));
             }}
           />
-          {filteredCountries.length > 0 && (
-            <FilteredCountries countries={filteredCountries} />
-          )}
-          <AllCountries countries={allCountriesData} />
+          <RegionsSelector
+            onCellSelected={handleSelectedRegion}
+            list={regions}
+          />
+          <div className='list-sections'>
+            {filteredCountries.length > 0 && (
+              <FilteredCountries countries={filteredCountries} />
+            )}
+            <AllCountries countries={allCountriesData} />
+          </div>
         </>
       ) : (
         <p>No countries yet</p>
@@ -45,6 +54,7 @@ const CountriesView: React.FC<OwnProps> = ({
 const mapStateToProps = (state: any) => ({
   allCountriesData: state.allCountriesData.allCountriesData,
   filteredCountries: state.allCountriesData.filteredForComparison,
+  regions: state.allCountriesData.regions,
 });
 
 const connector = connect(mapStateToProps);

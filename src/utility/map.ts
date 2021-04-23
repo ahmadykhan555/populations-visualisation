@@ -1,17 +1,26 @@
-import mapbox from "mapbox-gl";
+import mapboxgl from "mapbox-gl";
+import mapbox, { Popup } from "mapbox-gl";
+import { DEFAULT_CENTER, DEFAULT_ZOOM_LEVEL } from "../constants/index";
 mapbox.accessToken = process.env.REACT_APP_MAP_ACCESS_TOKEN || "";
 
-const DEFAULT_ZOOM_LEVEL = 2;
-const DEFAULT_CENTER = new mapbox.LngLat(-74.5, 40);
-
+/**
+ *
+ * @param container HTML element to contain the map
+ * @param center coordinates for map center
+ * @param zoom coordinates for map zoom-level
+ * @returns {mapboxgl.Map} Map
+ */
 export const createMap = (
   container: string,
   center: mapbox.LngLat = DEFAULT_CENTER,
   zoom = DEFAULT_ZOOM_LEVEL
-): mapbox.Map => {
+): mapbox.Map | undefined => {
+  if (!mapbox.accessToken) {
+    return;
+  }
   return new mapbox.Map({
     container, // unique container ID
-    style: "mapbox://styles/mapbox/streets-v11", // style URL
+    style: "mapbox://styles/mapbox/light-v10", // style URL
     center,
     zoom,
   });
@@ -29,6 +38,12 @@ export const createMarker = (id: string, coords: mapbox.LngLat) => {
   el.className = "location-marker";
   return new mapbox.Marker(el).setLngLat(coords);
 };
+
+/**
+ *
+ * @param text popup text to show
+ * @returns {Popup} mapboxPopup
+ */
 
 export const createPopup = (text: string): mapbox.Popup => {
   return new mapbox.Popup({

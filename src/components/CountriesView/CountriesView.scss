@@ -4,5 +4,16 @@
   .countries-list {
     overflow-y: scroll;
     max-height: calc(100vh - 120px);
+
+    @media (max-width: 1080px) {
+      height: 410px;
+      margin-bottom: 1rem;
+    }
+  }
+
+  .section-label {
+    font-weight: 900;
+    text-transform: uppercase;
+    margin: 1rem 0 !important;
   }
 }

@@ -1,13 +1,33 @@
 .app {
   height: 100%;
   display: flex;
-  padding: 2rem;
+  padding: 1rem;
   box-sizing: border-box;
+
+  &__aside {
+    max-width: 450px;
+  }
 
   &__center {
     display: flex;
     flex-direction: column;
     flex: 1;
     margin-left: 1rem;
+  }
+
+  @media (max-width: 1080px) {
+    flex-direction: column;
+    padding: 2rem;
+    max-height: 100vh;
+    overflow-y: scroll;
+
+    &__center {
+      min-height: 700px;
+      margin-left: 0;
+    }
+
+    &__aside {
+      max-width: 100%;
+    }
   }
 }
