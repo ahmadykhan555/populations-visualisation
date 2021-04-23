@@ -19,7 +19,7 @@ const CountriesView: React.FC<OwnProps> = ({
     const filteredForRegion = allCountriesData.filter(
       (country: Country) => country.region === region
     );
-    dispatch(setCountriesForComparison(filteredForRegion.slice(0, 5)));
+    dispatch(setCountriesForComparison(filteredForRegion));
   };
   return (
     <div className='countries-list-component'>
@@ -30,7 +30,7 @@ const CountriesView: React.FC<OwnProps> = ({
             list={allCountriesData}
             placeholderText='Search countries/regions'
             onSearchComplete={(list: any) => {
-              dispatch(setCountriesForComparison(list.slice(0, 5)));
+              dispatch(setCountriesForComparison(list));
             }}
           />
           <RegionsSelector
