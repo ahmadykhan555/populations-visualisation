@@ -53,7 +53,7 @@ const CountriesView: React.FC<OwnProps> = ({
 
 const mapStateToProps = (state: any) => ({
   allCountries: state.data.allCountries,
-  filteredCountries: state.data.filteredForComparison,
+  filteredCountries: state.data.filteredCountries,
   regions: state.data.regions,
 });
 

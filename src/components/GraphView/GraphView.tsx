@@ -20,7 +20,7 @@ const GraphView: React.FC<OwnProps> = ({ filteredCountries }) => {
 };
 
 const mapStateToProps = (state: any) => ({
-  filteredCountries: state.data.filteredForComparison,
+  filteredCountries: state.data.filteredCountries,
 });
 const connector = connect(mapStateToProps);
 type PropsFromRedux = ConnectedProps<typeof connector>;

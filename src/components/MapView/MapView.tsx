@@ -53,7 +53,7 @@ const MapView: React.FC<OwnProps> = ({ countriesData }) => {
 };
 
 const mapStateToProps = (state: any) => ({
-  countriesData: state.data.filteredForComparison,
+  countriesData: state.data.filteredCountries,
 });
 
 const connector = connect(mapStateToProps);

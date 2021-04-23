@@ -5,13 +5,13 @@ import { MAX_COUNTRIES_TO_COMPARE } from "../../constants";
 
 interface CountriesData {
   allCountries: Country[];
-  filteredForComparison: Country[];
+  filteredCountries: Country[];
   regions: string[];
 }
 
 const initialState: CountriesData = {
   allCountries: [],
-  filteredForComparison: [],
+  filteredCountries: [],
   regions: [],
 };
 
@@ -40,18 +40,15 @@ const countriesReducer = (
       const filtered = action.payload?.slice(0, MAX_COUNTRIES_TO_COMPARE) || [];
       return {
         ...state,
-        filteredForComparison: filtered,
+        filteredCountries: filtered,
       };
     }
 
     case CountryStateActions.AddForComparison: {
-      if (state.filteredForComparison.length < MAX_COUNTRIES_TO_COMPARE) {
+      if (state.filteredCountries.length < MAX_COUNTRIES_TO_COMPARE) {
         return {
           ...state,
-          filteredForComparison: [
-            ...state.filteredForComparison,
-            action.payload,
-          ],
+          filteredCountries: [...state.filteredCountries, action.payload],
         };
       } else {
         return { ...state };
@@ -60,10 +57,10 @@ const countriesReducer = (
 
     case CountryStateActions.RemoveFromComparison: {
       const countryToRemove = action.payload;
-      const countries = state.filteredForComparison.filter(
+      const countries = state.filteredCountries.filter(
         (country) => country.name !== countryToRemove.name
       );
-      return { ...state, filteredForComparison: countries };
+      return { ...state, filteredCountries: countries };
     }
     default:
       return { ...state };
