@@ -4,13 +4,13 @@ import { StateAction } from "..";
 import { MAX_COUNTRIES_TO_COMPARE } from "../../constants";
 
 interface CountriesData {
-  allCountriesData: Country[];
+  allCountries: Country[];
   filteredForComparison: Country[];
   regions: string[];
 }
 
 const initialState: CountriesData = {
-  allCountriesData: [],
+  allCountries: [],
   filteredForComparison: [],
   regions: [],
 };
@@ -31,7 +31,7 @@ const countriesReducer = (
       }
       return {
         ...state,
-        allCountriesData: action.payload,
+        allCountries: action.payload,
         regions: Object.keys(regionsMap),
       };
     }

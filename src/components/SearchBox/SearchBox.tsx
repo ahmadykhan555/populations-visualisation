@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import debounce from "lodash.debounce";
 import { configureSearcher } from "../../utility/search";
 import fuse from "fuse.js";
+import { DEBOUNCE_DURATION } from "../../constants";
 
 interface OwnProps {
   onSearchComplete: Function;
@@ -12,7 +13,6 @@ interface OwnProps {
   searchFor: string[];
   searchThreshold?: number;
 }
-const DEBOUNCE_DURATION = 350; // in ms
 const SearchBoxComponent: React.FC<OwnProps> = ({
   placeholderText,
   list,
